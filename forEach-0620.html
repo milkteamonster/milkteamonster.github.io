@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="filter">
+        <input type="button" value="全部">
+        <input type="button" value="免費">
+        <input type="button" value="投幣式">
+    </div>
+    <!-- <button class="free">免費</button>
+    <button class="paid">投幣式</button> -->
+    <ul class="list">
+        <li>無料充電站，免費</li>
+    </ul>
+    
+    <script>
+        let data = [
+            {
+                Charge:"免費",
+                name: "紅紅充電站"
+            },
+            {
+                Charge:"投幣式",
+                name: "綠綠充電站"
+            },
+            {
+                Charge:"投幣式",
+                name: "黃黃充電站"
+            },
+            {
+                Charge:"投幣式",
+                name: "藍藍充電站"
+            },
+        ]
+        const list = document.querySelector(".list");
+        function init(){ //初始化
+        // const list = document.querySelector(".list"); 寫在外層了
+        let str = "";
+        data.forEach(function(item, index){
+            let content = `<li>${item.name},${item.Charge}</li>`;
+            str += content;
+        })
+        list.innerHTML = str;
+
+      
+    }
+    init(); //再叫出來
+
+    const stationFilter = document.querySelector(".filter");
+    stationFilter.addEventListener("click", function(e){
+        if(e.target.value == undefined){
+            console.log("you clicked the wrong place");
+            return; //中斷了，後面其他的就不執行
+        }
+        let str = "";
+        data.forEach(function(item, index){
+            console.log(e.target.value == item.Charge); //button的文字跟data做比對
+            if(e.target.value == "全部"){
+                str += `<li>${item.name},${item.Charge}</li>`
+            } else if(e.target.value == item.Charge){
+                str += `<li>${item.name},${item.Charge}</li>`
+            }
+        })
+        // const list = document.querySelector(".list"); 寫在外層了
+        list.innerHTML = str;
+    })
+    </script>
+</body>
+</html>
