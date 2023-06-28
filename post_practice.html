@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p class="title"></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- <script src="axios_get.js"></script> -->
+    <!-- <script src="post_practice.js"></script> -->
+
+<script>
+// https://hex-escape-room.herokuapp.com/api/user/signup
+
+let obj = {
+    email: 'mi@hexschool.com',
+    password: '12345678'
+}
+
+axios.post('https://hex-escape-room.herokuapp.com/api/user/signup', obj)
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+// ＊＊＊＊＊＊＊＊
+// chrome console裡
+// 若obj註冊的email是第一次寫上則會顯示"帳號註冊成功"
+// 若重新整理代表已註冊過，會顯示"此帳號已被使用"
+// ＊＊＊＊＊＊＊＊
+
+// 新增一個帳號。
+
+// Method: POST
+// URL: https://hex-escape-room.herokuapp.com/api/user/signup
+// Data:
+// {
+//   email: 'lovef2e@hexschool.com',
+//   password: '12345678'
+// }
+// Success Response:
+// {
+//   "success": true,
+//   "result": {},
+//   "message": "帳號註冊成功"
+// }
+// Error Response:
+// {
+//   "success": false,
+//   "result": {},
+//   "message": "此帳號已被使用"
+// }
+</script>
+    
+</body>
+</html>
