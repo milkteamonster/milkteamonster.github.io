@@ -5,17 +5,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    帳號：
+    <style>
+        h2{
+            font-family: 'Noto Sans TC', sans-serif;
+            font-size: 18px;
+            position: relative;
+            padding-bottom: 5px;
+            color: rgb(46, 62, 128);
+            font-weight: 400;
+        }
+        h2:before{
+            content: "";
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            bottom: 0px;
+            width: 80px;
+            height: 2px;
+            background-color: rgb(184, 215, 243);
+        }
+        h2:after{
+            content: "";
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            bottom: 0px;
+            width: 25px;
+            height: 2px;
+            background-color: rgb(130, 183, 230);
+        }
+        .send,.login{
+            border: none;
+            padding: 2px 10px;
+            border-radius: 5px;
+            background-color: rgb(200, 222, 242);
+            color: rgb(46, 62, 128);
+        }
+        .send:hover, .login:hover{
+            filter: saturate(10%);
+            transition: all .5s;
+            cursor: pointer;
+        }
+        span,input{
+            color: rgb(46, 62, 128);
+        }
+    </style>
+    <h2>註冊功能</h2>
+    <span>帳號：</span>
     <input type="text" class="account">
     <br>
-    密碼：
+    <span>密碼：</span>
     <input type="text" class="password">
+    <input type="button" value="註冊" class="send">
+    <span class="signup-status" style="color: red; font-size: 13px; margin-left: 15px;"></span>
+
+
+    <h2>登入功能</h2>
+    <span>帳號：</span>
+    <input type="text" class="loginAccount">
     <br>
-    <input type="button" value="送出" class="send">
-    <span class="message" style="color: red; font-size: 13px; margin-left: 15px;"></span>
+    <span>密碼：</span>
+    <input type="text" class="loginPassword">
+    <input type="button" value="送出" class="login">
+    <span class="login-status" style="color: red; font-size: 13px; margin-left: 15px;"></span>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="account_login.js"></script>
+
 </body>
 </html>
