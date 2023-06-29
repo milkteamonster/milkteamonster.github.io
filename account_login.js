@@ -62,7 +62,7 @@ function callLogin(){
     //     return;
     // };
     let obj = {}
-    obj.email = loginAccount;
+    obj.email = loginAccount.value;
     obj.password = loginPassword.value;
     axios.post('https://hex-escape-room.herokuapp.com/api/user/signin', obj)
     .then(function (response) {
