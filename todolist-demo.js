@@ -1,6 +1,6 @@
 let data = [
     {
-        content: "to do first thing"
+        content: "to do first thin"
     },
     {
         content: "brush my tooth"
