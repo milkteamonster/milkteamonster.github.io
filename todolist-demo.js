@@ -40,7 +40,7 @@ list.addEventListener("click", function(e){
         return
     }; //如果沒有寫這段，點到整個li而不是按鈕的話也會被消除
     let num = e.target.getAttribute("data-num");
-    data.splice(num, 2);
+    data.splice(num, 1);
     renderData();
 })
 
