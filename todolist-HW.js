@@ -64,26 +64,27 @@ const all = document.querySelector(".all");
 const undone = document.querySelector(".undone");
 const done = document.querySelector(".done");
 
+//全部的tab
+all.addEventListener("click", function(e){
+  all.setAttribute("class", "active");
+  undone.removeAttribute("class", "active");
+  done.removeAttribute("class", "active");
+})
+
+//待完成的tab
 undone.addEventListener("click", function(e){
     undone.setAttribute("class", "active");
     all.removeAttribute("class", "active");
     done.removeAttribute("class", "active");
 
 })
-
+//已完成的tab
 done.addEventListener("click", function(e){
     done.setAttribute("class", "active");
     all.removeAttribute("class", "active");
     undone.removeAttribute("class", "active");
     renderDone();
 })
-
-all.addEventListener("click", function(e){
-    all.setAttribute("class", "active");
-    undone.removeAttribute("class", "active");
-    done.removeAttribute("class", "active");
-})
-
 
 function renderDone(){
   let checked = document.querySelectorAll("input[type=checkbox]:checked");
