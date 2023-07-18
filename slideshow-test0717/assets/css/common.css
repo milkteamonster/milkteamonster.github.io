@@ -315,7 +315,7 @@ section:after,
 	display: block;
 	padding: 40px 30px;
 	margin: 0;
-	background-color: #131327;
+	/* background-color: #131327; */
 	color: #fff;
 	font-size: 1.875em;
 	line-height: 1.2;
