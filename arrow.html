@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函式陳述式  
+        console.log(numA(3)); //函式陳述式特性會把函式提取到最上面，所以console.log放在這個function的前面一樣會執行
+        function numA (x){
+            return x * x;
+        }
+
+        //函式表達式
+        // console.log(numB(3));
+         //函式表達式特性，const或let須先宣告後才會執行，所以把console.log放在function前面的話就會出現錯誤無法執行       
+        const numB = function(x){
+            return x * x;
+         }
+
+        //箭頭函式
+        const numC = (x) => {
+            return x * x;
+        }
+
+        //箭頭函式舉例
+        const numD =(x,y) =>{
+            const a = 2;
+            const b = 3;
+            return a*b*x*y;
+        }
+        console.log(numD(4,5));
+
+        //箭頭函式再縮寫
+        const num = (x) =>{
+            return `數字相乘 ${x*x}`;
+        }
+        console.log(num(11));
+        // ↓↓
+        const figure = x => `數字相乘 ${x*x}`; 
+        console.log(figure(9));
+        //若使用到return的話，return可以拿掉，大括號也可以拿掉
+        //若只有一個參數可以省略（）
+        //沒有參數x還是要有空括號 const num = () => `數字相乘 ${9}`; 
+
+
+        //陣列操作 map, filter 用箭頭函式撰寫
+
+
+        //map
+        const data = [1,8,13,20];
+        const newData = data.map(function(item){
+            return item > 5;  //輸出 [false, true, true, true] 在此是條件判斷
+        })
+        console.log(newData);
+
+        const array = [1,8,13,20];
+        const newarray = array.map(item => item+1);
+        console.log(newarray);
+
+        //filter
+        const ary = [1,8,13,20];
+        const newAry = ary.find(function(item){
+            return item > 5;  //輸出 [8, 13, 20] 在此是選出滿足條件的元素
+        })
+        console.log(newAry);
+
+        const scoreData = [
+            {
+                name: "kevin",
+                gender: "male",
+                score: 98
+            },
+            {
+                name: "Amy",
+                gender: "female",
+                score: 55
+            },
+            {
+                name: "Sharry",
+                gender: "female",
+                score: 70
+            },
+        ]
+        const scorefilter = scoreData.filter(function(item){
+            return item.gender == "female";
+        })
+        console.log(scorefilter);
+
+        //find
+        const origin = [1,8,13,20];
+        const neworigin = origin.find(function(item){
+						console.log(item)  //只印出1
+            return item > 5; 
+        })
+        console.log(neworigin); //輸出 8
+
+
+        //findIndex
+        const color = ["red", "blue", "black"];
+        const blueIndex = color.findIndex(function(item){
+            return item == "black";
+        })
+        console.log(blueIndex); //輸出2
+
+        const orders = [
+            {
+                name: "hua",
+                orderNum: "123475785"
+            },
+            {
+                name: "shin",
+                orderNum: "123476785"
+            },
+            {
+                name: "chen",
+                orderNum: "123990485"
+            }
+        ]
+        const huaId = orders.findIndex(function(item){
+            return item.orderNum == "123475785";
+        })
+        console.log(`this order is ${orders[huaId].name}`)
+
+    </script>
+</body>
+</html>
+
+
+
+
+
