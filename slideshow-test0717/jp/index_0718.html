@@ -209,57 +209,78 @@
 				</h1>
 				<p>We always make a sincere effort for all stakeholders</p>
 			</div>
-		  </div>
+		</div>
 
-		  <script>
-			// ランダムな画像のURLのリスト
-			var randomImages = [
+		<script>
+		// ランダムな画像のURLのリスト
+		var randomImages = [
 			"../assets/img/top/02.jpg",
 			"../assets/img/top/03.jpg",
 			"../assets/img/top/04.jpg"
-			];
-		
-			// スライダーの要素を取得
-			var slider = document.getElementById("slider");
-		
-			// 2枚目以降のランダムな画像を表示する関数
-			function showRandomImage() {
-			  // ランダムなインデックスを生成
-			  var randomIndex = Math.floor(Math.random() * randomImages.length);
-			  // ランダムな画像のURLを取得
-			  var randomImageUrl = randomImages[randomIndex];
-			  // 画像要素を作成
-			  var imgElement = document.createElement("img");
-			  imgElement.src = randomImageUrl;
-			//   imgElement.alt = "ランダム画像";
-			  imgElement.classList.add("active");
-			  // スライダーに追加
-			  slider.appendChild(imgElement);
-			  // フェードインのために少しの遅延を追加
-			  setTimeout(function() {
-				imgElement.style.opacity = 1;
-			  }, 100);
+		];
+
+		// スライダーの要素を取得
+		var slider = document.getElementById("slider");
+
+		// 最初の画像（01.jpg）を表示する関数
+		function showFirstImage() {
+			var firstImage = document.createElement("img");
+			firstImage.src = "../assets/img/top/01.jpg";
+			firstImage.style.opacity = 1;
+			slider.appendChild(firstImage);
+		}
+
+		// 画像を切り替える関数
+		function switchImage() {
+			// 現在の画像を非表示にする
+			var currentImage = slider.querySelector("img");
+			currentImage.style.opacity = 0;
+
+			// ランダムな画像要素を作成
+			var randomImageElement = document.createElement("img");
+			randomImageElement.style.opacity = 0;
+
+			// ランダムな画像を取得して表示
+			if (randomImages.length > 0) {
+				var randomIndex = Math.floor(Math.random() * randomImages.length);
+				var randomImageUrl = randomImages[randomIndex];
+				randomImageElement.src = randomImageUrl;
+				randomImages.splice(randomIndex, 1);
+			} else {
+				randomImageElement.src = "../assets/img/top/01.jpg";
+				randomImages = [
+					"../assets/img/top/02.jpg",
+					"../assets/img/top/03.jpg",
+					"../assets/img/top/04.jpg"
+				];
 			}
-		
-			// 3秒ごとに画像を切り替えるタイマーを開始
-			setInterval(function() {
-			  var activeImage = document.querySelector("#slider img.active");
-			  if (activeImage) {
-				activeImage.style.opacity = 0;
-				activeImage.classList.remove("active");
-				// フェードアウト完了後に画像を削除
-				setTimeout(function() {
-				  activeImage.parentNode.removeChild(activeImage);
-				}, 500);
-			  }
-			  showRandomImage();
-			}, 3000);
-		
-			// ページが読み込まれた時に最初の画像を表示
-			window.onload = function() {
-			//   showRandomImage();
-			};
-		  </script>
+
+			// スライダーに追加
+			slider.appendChild(randomImageElement);
+
+			// フェードイン
+			setTimeout(function () {
+				randomImageElement.style.opacity = 1;
+			}, 100);
+
+			// 現在の画像を削除
+			setTimeout(function () {
+				slider.removeChild(currentImage);
+			}, 1000);
+		}
+
+		// 3秒ごとに画像を切り替えるタイマーを開始
+		setInterval(function () {
+			switchImage();
+		}, 3000);
+
+		// ページが読み込まれた時に最初の画像を表示
+		window.onload = function () {
+			showFirstImage();
+			switchImage();
+		};
+
+		</script>
 
 		<!-- <script>
 			$('#main .top-kv').backstretch([
